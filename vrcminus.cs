@@ -31,7 +31,6 @@ public class PluginComponent : MonoBehaviour
 
     public void Update()
     {
-        VM.Logger.LogInfo("VRCMinus OnUpdate!");
         try
         {
             //Shit that may re-appear so we just re-delete it all the time :)
