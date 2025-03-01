@@ -1,0 +1,51 @@
+<Project>
+    <PropertyGroup Condition=" '$(OS)' == 'Windows_NT' ">
+        <VRChatPath>C:\Program Files (x86)\Steam\steamapps\common\VRChat</VRChatPath>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(OS)' == 'Unix' ">
+        <VRChatPath>$(HOME)/.steam/steam/steamapps/common/VRChat</VRChatPath>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <LangVersion>latest</LangVersion>
+
+        <AssemblySearchPaths>
+            {RawFileName};
+            $(VRChatPath)/Mods;
+            $(VRChatPath)/BepInEx/core;
+            $(VRChatPath)/BepInEx/interop;
+            $(VRChatPath)/BepInEx/unity-libs
+        </AssemblySearchPaths>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <!-- Il2Cpp -->
+        <Reference Include="Il2Cppmscorlib">
+            <Private>False</Private>
+            <SpecificVersion>False</SpecificVersion>
+        </Reference>
+        <!-- Unity -->
+        <Reference Include="UnityEngine.CoreModule">
+            <Private>False</Private>
+            <SpecificVersion>False</SpecificVersion>
+        </Reference>
+    </ItemGroup>
+    
+    <PropertyGroup>
+        <OutputPath>$(MsBuildThisFileDirectory)\Output\$(Configuration)\</OutputPath>
+        <LangVersion>preview</LangVersion>
+    </PropertyGroup>
+
+    <Target Name="PostClean" AfterTargets="Clean">
+        <RemoveDir Directories="$(MsBuildThisFileDirectory)\Output"/>
+        <RemoveDir Directories="$(BaseIntermediateOutputPath)" />
+        <RemoveDir Directories="$(BaseOutputPath)" />
+    </Target>
+
+    <Target Name="PostBuild" AfterTargets="PostBuildEvent" Condition="Exists('$(VRChatPath)')">
+        <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(VRChatPath)\BepInEx\plugins" />
+        <Message Text="Copied $(TargetFileName) to $(VRChatPath)\plugins" Importance="high" />
+    </Target>
+</Project>
