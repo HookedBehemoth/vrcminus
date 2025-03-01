@@ -29,7 +29,7 @@ public class PluginComponent : MonoBehaviour
         StartCoroutine(WaitForUiManager().WrapToIl2Cpp());
     }
 
-    public void OnUpdate()
+    public void Update()
     {
         VM.Logger.LogInfo("VRCMinus OnUpdate!");
         try
