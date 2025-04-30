@@ -21,6 +21,14 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <Reference Include="VRC.UI">
+            <Private>False</Private>
+            <SpecificVersion>False</SpecificVersion>
+        </Reference>
+        <Reference Include="VRC.UI.Shared">
+            <Private>False</Private>
+            <SpecificVersion>False</SpecificVersion>
+        </Reference>
         <Reference Include="0Harmony">
             <Private>False</Private>
             <SpecificVersion>False</SpecificVersion>
