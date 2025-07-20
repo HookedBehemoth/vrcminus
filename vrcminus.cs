@@ -39,6 +39,13 @@ public class PluginComponent : MonoBehaviour
             try {
                 if(GameObject.Find("UserInterface/Canvas_QuickMenu(Clone)/CanvasGroup/Container/Window").GetComponent<UnityEngine.UI.GraphicRaycaster>().IsActive() || GameObject.Find("UserInterface/Canvas_MainMenu(Clone)").GetComponent<UnityEngine.UI.GraphicRaycaster>().IsActive()) {
                     //Shit that may re-appear so we just re-delete it all the time :)
+                    try { GameObject.Find("InventoryVRCPlusPanel").SetActive(false); } catch {}
+                    try { GameObject.Find("InventoryVRCPlusWarning(Clone)").SetActive(false); } catch {}
+                    try { GameObject.Find("Canvas_MainMenu(Clone)/Container/MMParent/HeaderOffset/Menu_UserDetail/ScrollRect/Viewport/VerticalLayoutGroup/Row3/CellGrid_MM_Content/GiftBtn").SetActive(false); } catch {}
+                    try { GameObject.Find("Canvas_MainMenu(Clone)/Container/MMParent/HeaderOffset/Menu_UserDetail/ScrollRect/Viewport/VerticalLayoutGroup/Row2/Badges").SetActive(false); } catch {}
+                    try { GameObject.Find("Canvas_MainMenu(Clone)/Container/MMParent/HeaderOffset/Menu_MM_Profile/User profile ScrollRect/Viewport/VerticalLayoutGroup/Row2/Badges").SetActive(false); } catch {}
+                    try { GameObject.Find("Canvas_MainMenu(Clone)/Container/MMParent/Menu_Avatars/Menu_MM_DynamicSidePanel/Panel_SectionList/ScrollRect_Navigation_Container/ScrollRect_Content/Header_MM_H2/RightItemContainer/ExpiredBtn/Background_Button").SetActive(false); } catch {}
+                    try { GameObject.Find("Canvas_MainMenu(Clone)/Container/MMParent/Menu_Avatars/Menu_MM_DynamicSidePanel/Panel_SectionList/ScrollRect_Navigation_Container/ScrollRect_Content/Header_MM_H2/RightItemContainer/ExpiredBtn/Text_ButtonName").SetActive(false); } catch {}
                     try { GameObject.Find("Canvas_QuickMenu(Clone)/CanvasGroup/Container/Window/Page_Buttons_QM/HorizontalLayoutGroup/Page_VRCPlusExperiment").SetActive(false); } catch {}
                     try { GameObject.Find("Canvas_QuickMenu(Clone)/CanvasGroup/Container/Window/NewFeatureCallouts").SetActive(false); } catch {}
                     try { GameObject.Find("Canvas_MainMenu(Clone)/Container/Panel_MM_Wallet").SetActive(false); } catch {}
@@ -140,15 +147,11 @@ public class PluginComponent : MonoBehaviour
         try { GameObject.Destroy(GameObject.Find("Canvas_MainMenu(Clone)/Container/MMParent/HeaderOffset/Modal_MM_EditUserProfile/MenuPanel/ScrollRect/Viewport/VerticalLayoutGroup/Header_Pronouns")); } catch {}
         try { GameObject.Destroy(GameObject.Find("Canvas_MainMenu(Clone)/Container/MMParent/HeaderOffset/Modal_MM_EditUserProfile/MenuPanel/ScrollRect/Viewport/VerticalLayoutGroup/EditPronouns")); } catch {}
         try { GameObject.Destroy(GameObject.Find("Canvas_QuickMenu(Clone)/CanvasGroup/Container/Window/QMParent/Menu_Camera/Scrollrect/Viewport/VerticalLayoutGroup/Buttons/Button_Drone")); } catch {}
-
-        VM.Logger.LogInfo("VRCMinus Dumbass special case shit!");
-
-        //Dumbass special case shit
-        try { GameObject.Find("Canvas_MainMenu(Clone)/Container/MMParent/HeaderOffset/Menu_UserDetail/ScrollRect/Viewport/VerticalLayoutGroup/Row3/CellGrid_MM_Content/GiftBtn").transform.localScale = new Vector3(0,0,0); } catch {} //can't delete this at all or shit breaks, so just hide it :)
-        try { GameObject.Find("Canvas_MainMenu(Clone)/Container/MMParent/HeaderOffset/Menu_UserDetail/ScrollRect/Viewport/VerticalLayoutGroup/Row2/Badges").transform.localScale = new Vector3(0,0,0); } catch {} //Also can't be removed or the whole profile menu dies
-        try { GameObject.Find("Canvas_MainMenu(Clone)/Container/MMParent/HeaderOffset/Menu_MM_Profile/User profile ScrollRect/Viewport/VerticalLayoutGroup/Row2/Badges").transform.localScale = new Vector3(0,0,0); } catch {} //Also can't be removed or the whole profile menu dies
-        try { GameObject.Find("Canvas_MainMenu(Clone)/Container/MMParent/Menu_Avatars/Menu_MM_DynamicSidePanel/Panel_SectionList/ScrollRect_Navigation_Container/ScrollRect_Content/Header_MM_H2/RightItemContainer/ExpiredBtn/Background_Button").SetActive(false); } catch {} //started breaking the avatar menu when deleted
-        try { GameObject.Find("Canvas_MainMenu(Clone)/Container/MMParent/Menu_Avatars/Menu_MM_DynamicSidePanel/Panel_SectionList/ScrollRect_Navigation_Container/ScrollRect_Content/Header_MM_H2/RightItemContainer/ExpiredBtn/Text_ButtonName").SetActive(false); } catch {} //started breaking the avatar menu when deleted
+        
+        //These don't seem like they re-enable themselves on their own, but we'll see I guess lole
+        try { GameObject.Find("Canvas_MainMenu(Clone)/Container/MMParent/HeaderOffset/Menu_MM_Profile/Media ScrollRect_Navigation_Container/ScrollRect_Navigation/Viewport/VerticalLayoutGroup/Cell_MM_SidebarListItem - Photo Gallery").SetActive(false); } catch {}
+        try { GameObject.Find("Canvas_MainMenu(Clone)/Container/MMParent/HeaderOffset/Menu_MM_Profile/Media ScrollRect_Navigation_Container/ScrollRect_Navigation/Viewport/VerticalLayoutGroup/Cell_MM_SidebarListItem - Prints").SetActive(false); } catch {}
+        try { GameObject.Find("Canvas_MainMenu(Clone)/Container/MMParent/HeaderOffset/Menu_MM_Profile/Media ScrollRect_Navigation_Container/ScrollRect_Navigation/Viewport/VerticalLayoutGroup/Cell_MM_SidebarListItem - User Icons").SetActive(false); } catch {}
     }
 }
 
