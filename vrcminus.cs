@@ -58,6 +58,14 @@ public class PluginComponent : MonoBehaviour
                     try { GameObject.Find("Canvas_MainMenu(Clone)/Container/MMParent/HeaderOffset/Menu_MM_Avatars_AVM(Clone)/Dynamic_Content_Container/Viewport/Vertical_Layout_Group/Content_Container/Panel_My_Avatars_Panel/Panel_SectionList/ScrollRect_Navigation_Container/Navigation_Container/Banner_MoreFavoriteAvatars").SetActive(false); } catch {}
                     try { GameObject.Destroy(GameObject.Find("Container/InnerContainer/WingMenu/ScrollRect/Viewport/VerticalLayoutGroup/Button_Stickers")); } catch {}
                     try { GameObject.Find("Canvas_MainMenu(Clone)/Container/MMParent/HeaderOffset/Menu_Dashboard(Clone)/ScrollRect_MM/Viewport/Content/Panel/Carousel_Banners").SetActive(false); } catch {}
+                    try { GameObject.Find("Page_MM_Inventory_Emoji/Upsell_Buttons").SetActive(false); } catch {}
+                    try { GameObject.Find("Page_MM_Inventory_Emoji/Inventory_Info").SetActive(false); } catch {}
+                    try { GameObject.Find("Page_MM_Inventory_Stickers/Upsell_Buttons").SetActive(false); } catch {}
+                    try { GameObject.Find("Page_MM_Inventory_Stickers/Inventory_Info").SetActive(false); } catch {}
+                    try { GameObject.Find("Page_MM_Inventory_Items/Upsell_Buttons").SetActive(false); } catch {}
+                    try { GameObject.Find("Page_MM_Inventory_Items/Inventory_Info").SetActive(false); } catch {}
+                    try { GameObject.Find("Page_MM_Inventory_Cosmetics/Upsell_Buttons").SetActive(false); } catch {}
+                    try { GameObject.Find("Page_MM_Inventory_Cosmetics/Inventory_Info").SetActive(false); } catch {}
                     //n mod compatibility
                     try { GameObject.Destroy(GameObject.Find("Container/InnerContainer/Explore/ScrollRect/Viewport/VerticalLayoutGroup/Cell_Wing_Explore_HelpArticle(Clone)")); } catch {}
                     try { GameObject.Destroy(GameObject.Find("Container/InnerContainer/Explore/ScrollRect/Viewport/VerticalLayoutGroup/Cell_Wing_Explore_HelpTopic(Clone)")); } catch {}
@@ -149,6 +157,9 @@ public class PluginComponent : MonoBehaviour
         try { GameObject.Destroy(GameObject.Find("Canvas_QuickMenu(Clone)/CanvasGroup/Container/Window/QMParent/Menu_Camera/Scrollrect/Viewport/VerticalLayoutGroup/Buttons/Button_Drone")); } catch {}
         try { GameObject.Destroy(GameObject.Find("Canvas_QuickMenu(Clone)/CanvasGroup/Container/Window/QMParent/Menu_Dashboard/Header_H1/RightItemContainer/Button_QM_Inventory")); } catch {}
         try { GameObject.Destroy(GameObject.Find("Canvas_MainMenu(Clone)/Container/MMParent/HeaderOffset/Menu_MM_Groups(Clone)/Menu_MM_DynamicSidePanel/Panel_SectionList/ScrollRect_Navigation_Container/ScrollRect_Content/Viewport/Panel_GroupLandingPage/InfoHeader")); } catch {}
+        try { GameObject.Destroy(GameObject.Find("Canvas_QuickMenu(Clone)/CanvasGroup/Container/Window/QMParent/Menu_Dashboard/ScrollRect/Viewport/VerticalLayoutGroup/Buttons_QuickLinks/Button_Shop")); } catch {}
+        try { GameObject.Destroy(GameObject.Find("Canvas_MainMenu(Clone)/Container/PageButtons/HorizontalLayoutGroup/CentralMarketplace_Button_Tab")); } catch {}
+        try { GameObject.Destroy(GameObject.Find("Canvas_MainMenu(Clone)/Container/MMParent/HeaderOffset/Menu_MM_Profile(Clone)/Navigation_Container/Navigation_Toggles/Wallet_Toggle/")); } catch {}
         
         //These don't seem like they re-enable themselves on their own, but we'll see I guess lole
         try { GameObject.Find("Canvas_MainMenu(Clone)/Container/MMParent/HeaderOffset/Menu_MM_Profile(Clone)/Inventory_Container/ScrollRect_Navigation/Viewport/VerticalLayoutGroup/Cell_MM_SidebarListItem - Photo Gallery").SetActive(false); } catch {}
