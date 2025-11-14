@@ -57,6 +57,8 @@ public class PluginComponent : MonoBehaviour
                     try { GameObject.Find("ScrollRect/Viewport/VerticalLayoutGroup/Panel_AddPhotoPrompt").SetActive(false); } catch {}
                     try { GameObject.Find("Canvas_MainMenu(Clone)/Container/MMParent/HeaderOffset/Menu_MM_Avatars_AVM(Clone)/Dynamic_Content_Container/Viewport/Vertical_Layout_Group/Content_Container/Panel_My_Avatars_Panel/Panel_SectionList/ScrollRect_Navigation_Container/Navigation_Container/Banner_MoreFavoriteAvatars").SetActive(false); } catch {}
                     try { GameObject.Destroy(GameObject.Find("Container/InnerContainer/WingMenu/ScrollRect/Viewport/VerticalLayoutGroup/Button_Stickers")); } catch {}
+                    // _Application 4e86df1c-b936-40d6-a115-379ae54aac4c/UserInterface/Canvas_MainMenu(Clone)/Container/MMParent/HeaderOffset/Menu_Dashboard(Clone)/ScrollRect_MM/Viewport/Content/Panel/Carousel_Banners
+                    // try { GameObject.Find("Canvas_MainMenu(Clone)/Container/MMParent/HeaderOffset/Menu_QM_Launchpad(Clone)/ScrollRect_MM/Viewport/Content/Panel/Carousel_Banners").SetActive(false); } catch {}
                     try { GameObject.Find("Canvas_MainMenu(Clone)/Container/MMParent/HeaderOffset/Menu_Dashboard(Clone)/ScrollRect_MM/Viewport/Content/Panel/Carousel_Banners").SetActive(false); } catch {}
                     try { GameObject.Find("Page_MM_Inventory_Emoji/Upsell_Buttons").SetActive(false); } catch {}
                     try { GameObject.Find("Page_MM_Inventory_Emoji/Inventory_Info").SetActive(false); } catch {}
@@ -130,13 +132,16 @@ public class PluginComponent : MonoBehaviour
         VM.Logger.LogInfo("VRCMinus Waiting!");
 
         /* Wait for VRCUiManager init */
-        while (GameObject.Find("Canvas_QuickMenu(Clone)/CanvasGroup/Container/Window/QMParent/Menu_Dashboard/ScrollRect/Viewport/VerticalLayoutGroup/Carousel_Banners") == null)
+        while (GameObject.Find("Canvas_QuickMenu(Clone)/CanvasGroup/Container/Window/QMParent/Menu_QM_Launchpad/ScrollRect/Viewport/VerticalLayoutGroup/Carousel_Banners") == null)
             yield return new WaitForSeconds(1f);
+
+        // _Application 4e86df1c-b936-40d6-a115-379ae54aac4c/UserInterface/Canvas_QuickMenu(Clone)/CanvasGroup/Container/Window/QMParent/Menu_QM_Launchpad/ScrollRect/Viewport/VerticalLayoutGroup/Carousel_Banners
 
         VM.Logger.LogInfo("VRCMinus Nuking!");
 
-        try { GameObject.Destroy(GameObject.Find("Canvas_QuickMenu(Clone)/CanvasGroup/Container/Window/QMParent/Menu_Dashboard/ScrollRect/Viewport/VerticalLayoutGroup/Carousel_Banners")); } catch {}
-        try { GameObject.Destroy(GameObject.Find("Canvas_MainMenu(Clone)/Container/MMParent/Menu_Dashboard/ScrollRect_MM/Viewport/Content/Panel")); } catch {}
+        // try { GameObject.Destroy(GameObject.Find("Canvas_QuickMenu(Clone)/CanvasGroup/Container/Window/QMParent/Menu_QM_Launchpad/ScrollRect/Viewport/VerticalLayoutGroup/Carousel_Banners")); } catch { }
+        try { GameObject.Find("Canvas_QuickMenu(Clone)/CanvasGroup/Container/Window/QMParent/Menu_QM_Launchpad/ScrollRect/Viewport/VerticalLayoutGroup/Carousel_Banners").SetActive(false); } catch {}
+        // try { GameObject.Destroy(GameObject.Find("Canvas_MainMenu(Clone)/Container/MMParent/Menu_QM_Launchpad/ScrollRect_MM/Viewport/Content/Panel")); } catch {}
         try { GameObject.Destroy(GameObject.Find("Canvas_MainMenu(Clone)/Container/MMParent/Menu_Avatars/Menu_MM_DynamicSidePanel/Panel_SectionList/ScrollRect_Navigation_Container/ScrollRect_Content/Viewport/VerticalLayoutGroup/VRC+ Upsell")); } catch {}
         try { GameObject.Destroy(GameObject.Find("Canvas_MainMenu(Clone)/Container/PageButtons/HorizontalLayoutGroup/Page_VRC_Plus_Unsubscribed_Button_Tab")); } catch {}
         try { GameObject.Destroy(GameObject.Find("Canvas_MainMenu(Clone)/Container/PageButtons/HorizontalLayoutGroup/Page_Marketplace")); } catch {}
@@ -155,9 +160,11 @@ public class PluginComponent : MonoBehaviour
         try { GameObject.Destroy(GameObject.Find("Canvas_MainMenu(Clone)/Container/MMParent/HeaderOffset/Modal_MM_EditUserProfile/MenuPanel/ScrollRect/Viewport/VerticalLayoutGroup/Header_Pronouns")); } catch {}
         try { GameObject.Destroy(GameObject.Find("Canvas_MainMenu(Clone)/Container/MMParent/HeaderOffset/Modal_MM_EditUserProfile/MenuPanel/ScrollRect/Viewport/VerticalLayoutGroup/EditPronouns")); } catch {}
         try { GameObject.Destroy(GameObject.Find("Canvas_QuickMenu(Clone)/CanvasGroup/Container/Window/QMParent/Menu_Camera/Scrollrect/Viewport/VerticalLayoutGroup/Buttons/Button_Drone")); } catch {}
-        try { GameObject.Destroy(GameObject.Find("Canvas_QuickMenu(Clone)/CanvasGroup/Container/Window/QMParent/Menu_Dashboard/Header_H1/RightItemContainer/Button_QM_Inventory")); } catch {}
+        // try { GameObject.Destroy(GameObject.Find("Canvas_QuickMenu(Clone)/CanvasGroup/Container/Window/QMParent/Menu_QM_Launchpad/Header_H1/RightItemContainer/Button_QM_Inventory")); } catch {}
         try { GameObject.Destroy(GameObject.Find("Canvas_MainMenu(Clone)/Container/MMParent/HeaderOffset/Menu_MM_Groups(Clone)/Menu_MM_DynamicSidePanel/Panel_SectionList/ScrollRect_Navigation_Container/ScrollRect_Content/Viewport/Panel_GroupLandingPage/InfoHeader")); } catch {}
-        try { GameObject.Destroy(GameObject.Find("Canvas_QuickMenu(Clone)/CanvasGroup/Container/Window/QMParent/Menu_Dashboard/ScrollRect/Viewport/VerticalLayoutGroup/Buttons_QuickLinks/Button_Shop")); } catch {}
+        // _Application 4e86df1c-b936-40d6-a115-379ae54aac4c/UserInterface/Canvas_MainMenu(Clone)/Container/PageButtons/Shop_Button_Tab
+        try { GameObject.Destroy(GameObject.Find("Canvas_MainMenu(Clone)/Container/PageButtons/HorizontalLayoutGroup/Live_Now_Button_Tab")); } catch {}
+        try { GameObject.Destroy(GameObject.Find("Canvas_MainMenu(Clone)/Container/PageButtons/HorizontalLayoutGroup/Shop_Button_Tab")); } catch {}
         try { GameObject.Destroy(GameObject.Find("Canvas_MainMenu(Clone)/Container/PageButtons/HorizontalLayoutGroup/CentralMarketplace_Button_Tab")); } catch {}
         try { GameObject.Destroy(GameObject.Find("Canvas_MainMenu(Clone)/Container/MMParent/HeaderOffset/Menu_MM_Profile(Clone)/Navigation_Container/Navigation_Toggles/Wallet_Toggle/")); } catch {}
         
