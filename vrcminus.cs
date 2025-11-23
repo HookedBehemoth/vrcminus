@@ -36,13 +36,14 @@ public class PluginComponent : MonoBehaviour
     private static System.Collections.IEnumerator UiThread()
     {
         while (true) {
+            yield return new WaitForSeconds(0.25f); //Maybe bypass the issue of the UI turning white sometimes but idk, really hard to figure out
             try {
                 if(GameObject.Find("UserInterface/Canvas_QuickMenu(Clone)/CanvasGroup/Container/Window").GetComponent<UnityEngine.UI.GraphicRaycaster>().IsActive() || GameObject.Find("UserInterface/Canvas_MainMenu(Clone)").GetComponent<UnityEngine.UI.GraphicRaycaster>().IsActive()) {
                     //Shit that may re-appear so we just re-delete it all the time :)
                     try { GameObject.Find("InventoryVRCPlusPanel").SetActive(false); } catch {}
                     try { GameObject.Find("InventoryVRCPlusWarning(Clone)").SetActive(false); } catch {}
                     try { GameObject.Find("Canvas_MainMenu(Clone)/Container/MMParent/HeaderOffset/Menu_UserDetail(Clone)/ScrollRect/Viewport/VerticalLayoutGroup/Row3/CellGrid_MM_Content/GiftBtn").SetActive(false); } catch {}
-                    try { GameObject.Find("Canvas_MainMenu(Clone)/Container/MMParent/HeaderOffset/Menu_MM_Profile(Clone)/User profile ScrollRect/Viewport/VerticalLayoutGroup/Row2/Badges").SetActive(false); } catch {}
+                    try { GameObject.Find("Canvas_MainMenu(Clone)/Container/MMParent/HeaderOffset/Menu_MM_Profile(Clone)/User Profile_Container/Viewport/VerticalLayoutGroup/Row2/Badges").SetActive(false); } catch {}
                     try { GameObject.Find("Canvas_MainMenu(Clone)/Container/MMParent/HeaderOffset/Menu_UserDetail(Clone)/ScrollRect/Viewport/VerticalLayoutGroup/Row2/Badges").SetActive(false); } catch {}
                     try { GameObject.Find("Canvas_MainMenu(Clone)/Container/MMParent/Menu_Avatars/Menu_MM_DynamicSidePanel/Panel_SectionList/ScrollRect_Navigation_Container/ScrollRect_Content/Header_MM_H2/RightItemContainer/ExpiredBtn/Background_Button").SetActive(false); } catch {}
                     try { GameObject.Find("Canvas_MainMenu(Clone)/Container/MMParent/Menu_Avatars/Menu_MM_DynamicSidePanel/Panel_SectionList/ScrollRect_Navigation_Container/ScrollRect_Content/Header_MM_H2/RightItemContainer/ExpiredBtn/Text_ButtonName").SetActive(false); } catch {}
@@ -68,14 +69,21 @@ public class PluginComponent : MonoBehaviour
                     try { GameObject.Find("Page_MM_Inventory_Items/Inventory_Info").SetActive(false); } catch {}
                     try { GameObject.Find("Page_MM_Inventory_Cosmetics/Upsell_Buttons").SetActive(false); } catch {}
                     try { GameObject.Find("Page_MM_Inventory_Cosmetics/Inventory_Info").SetActive(false); } catch {}
-                    //n mod compatibility
-                    try { GameObject.Destroy(GameObject.Find("Container/InnerContainer/Explore/ScrollRect/Viewport/VerticalLayoutGroup/Cell_Wing_Explore_HelpArticle(Clone)")); } catch {}
-                    try { GameObject.Destroy(GameObject.Find("Container/InnerContainer/Explore/ScrollRect/Viewport/VerticalLayoutGroup/Cell_Wing_Explore_HelpTopic(Clone)")); } catch {}
+                    try { GameObject.Find("Page_MM_Inventory_Cosmetics/Content/Panel_MM_ScrollRect/Viewport/VerticalLayoutGroup/Category_Backgrounds/Contents/Button_ShowMoreLess").SetActive(false); } catch {}
+                    try { GameObject.Find("UserCamera/ViewFinder/UI/Container/Controls Menu/Setting Menu/Scroll View/Viewport/Content/Dolly").SetActive(false); } catch {}
+                    try {
+                        if (GameObject.Find("Page_MM_Inventory_Cosmetics/Content/Panel_MM_ScrollRect/Viewport/VerticalLayoutGroup/Category_Backgrounds/Contents/InventoryContents/Filigree/") != null) {
+                            var bgMenu = GameObject.Find("Page_MM_Inventory_Cosmetics/Content/Panel_MM_ScrollRect/Viewport/VerticalLayoutGroup/Category_Backgrounds/Contents/InventoryContents");
+                            for (int i = 4; i < 8; i++) {
+                                GameObject.Destroy(bgMenu.transform.GetChild(i).gameObject);
+                            }
+                        }
+                    } catch {}
                     // New Avatar Explore Menu
                     try {
                         if (GameObject.Find("Canvas_MainMenu(Clone)/Container/MMParent/HeaderOffset/Menu_MM_Avatars_AVM(Clone)/Dynamic_Content_Container/Viewport/Vertical_Layout_Group/Content_Container/Panel_Explore_Avatars_Panel/Content_Scroll/Viewport/Vertical_Layout_Group/Content_Avatars/Avatar_Categories/wholesomechungus") == null) {
                             var avatarsMenu = GameObject.Find("Canvas_MainMenu(Clone)/Container/MMParent/HeaderOffset/Menu_MM_Avatars_AVM(Clone)/Dynamic_Content_Container/Viewport/Vertical_Layout_Group/Content_Container/Panel_Explore_Avatars_Panel/Content_Scroll/Viewport/Vertical_Layout_Group/Content_Avatars/Avatar_Categories");
-                            for (int i = avatarsMenu.transform.childCount -3; i >= 0; i--) { // The last two are probably always going to be the free ones, fuck vrchat btw
+                            for (int i = avatarsMenu.transform.childCount -2; i >= 0; i--) { //Public is always last
                                 GameObject.Destroy(avatarsMenu.transform.GetChild(i).gameObject);
                             }
                             for (int i = avatarsMenu.transform.childCount + 1; i >= 0; i--) {
@@ -96,7 +104,7 @@ public class PluginComponent : MonoBehaviour
                     // Silly haha clock menu xd
                     try {
                         var clockMenu = GameObject.Find("Canvas_QuickMenu(Clone)/CanvasGroup/Container/Window/QMParent/Menu_QM_ClockMode/ScrollRect/Viewport/VerticalLayoutGroup");
-                        clockMenu.transform.GetChild(3).gameObject.SetActive(false);
+                        clockMenu.transform.GetChild(2).gameObject.SetActive(false);
                         clockMenu.transform.GetChild(5).gameObject.SetActive(false);
                     } catch {}
                 }
@@ -123,7 +131,6 @@ public class PluginComponent : MonoBehaviour
                     } catch {}
                 }
             } catch {}
-            yield return new WaitForSeconds(0.25f);
         }
     }
 
@@ -138,6 +145,7 @@ public class PluginComponent : MonoBehaviour
         // _Application 4e86df1c-b936-40d6-a115-379ae54aac4c/UserInterface/Canvas_QuickMenu(Clone)/CanvasGroup/Container/Window/QMParent/Menu_QM_Launchpad/ScrollRect/Viewport/VerticalLayoutGroup/Carousel_Banners
 
         VM.Logger.LogInfo("VRCMinus Nuking!");
+        yield return new WaitForSeconds(1f); // probably fixes a race condition that smashes the whole menu ui
 
         // try { GameObject.Destroy(GameObject.Find("Canvas_QuickMenu(Clone)/CanvasGroup/Container/Window/QMParent/Menu_QM_Launchpad/ScrollRect/Viewport/VerticalLayoutGroup/Carousel_Banners")); } catch { }
         try { GameObject.Find("Canvas_QuickMenu(Clone)/CanvasGroup/Container/Window/QMParent/Menu_QM_Launchpad/ScrollRect/Viewport/VerticalLayoutGroup/Carousel_Banners").SetActive(false); } catch {}
